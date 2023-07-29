@@ -40,13 +40,16 @@ const storeItems = [
 function App() {
   let [basketItems, setBasketItems] = useState([]);
   let [searchValue, setSearchValue] = useState("");
-  let filteredItems = basketItems.filter(
+  let filteredItems = storeItems.filter(
     (item) => item.name.toLowerCase().indexOf(searchValue) >= 0
   );
   return (
     <Container>
+      <Input.Wrapper label="Arama">
+        <Input onChange={(e) => setSearchValue(e.target.value)} />
+      </Input.Wrapper>
       <SimpleGrid cols={3} className="Store">
-        {storeItems.map(({ name, src }) => {
+        {filteredItems.map(({ name, src }) => {
           return (
             <Card
               key={name}
@@ -57,10 +60,6 @@ function App() {
           );
         })}
       </SimpleGrid>
-      {searchValue}
-      <Input.Wrapper label="Arama">
-        <Input onChange={(e) => setSearchValue(e.target.value)} />
-      </Input.Wrapper>
       <List
         className="List"
         spacing="xs"
@@ -72,7 +71,7 @@ function App() {
           </ThemeIcon>
         }
       >
-        {filteredItems.map(({ name }, index) => (
+        {basketItems.map(({ name }, index) => (
           <List.Item key={index}>{name}</List.Item>
         ))}
       </List>
