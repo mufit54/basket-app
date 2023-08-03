@@ -10,7 +10,7 @@ import {
   ThemeIcon,
   SimpleGrid,
 } from "@mantine/core";
-import { IconCircleCheck, IconCircleDashed } from "@tabler/icons-react";
+import { IconCircleCheck, IconBasket, IconDatabase } from "@tabler/icons-react";
 import Card from "./components/Card";
 import "./App.css";
 
@@ -65,7 +65,9 @@ function App() {
         </Input.Wrapper>
         <Button onClick={() => setSearchValue("")}>Temizle</Button>
         <Indicator color="red" label={basketItems.length} size={22}>
-          <Button onClick={() => setOpened(true)}>Sepet</Button>
+          <Button onClick={() => setOpened(true)}>
+            <IconBasket size={22} />
+          </Button>
         </Indicator>
       </Group>
       <SimpleGrid cols={3} className="Store">
